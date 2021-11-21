@@ -2,21 +2,14 @@ require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
-const formidable = require("express-formidable");
-const mongoose = require("mongoose");
 const morgan = require("morgan");
 
 const app = express();
 app.use(cors());
-app.use(formidable());
 //Utilisation du middleware morgan
 app.use(morgan("dev"));
 
-mongoose.connect(process.env.MONGODB_URI);
-
 //import des routes
-const userRoutes = require("./routes/users");
-app.use(userRoutes);
 const characterRoutes = require("./routes/characters");
 app.use(characterRoutes);
 const comicRoutes = require("./routes/comics");
